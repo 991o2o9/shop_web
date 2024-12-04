@@ -13,7 +13,7 @@ export const Search = ({ onSearch, initialValue = "" }) => {
   const handleInputChange = (e) => {
     const value = e.target.value;
     setSearchValue(value);
-
+    updateQueryParams(value);
     if (value.trim() === "") {
       onSearch("");
     }
@@ -21,17 +21,25 @@ export const Search = ({ onSearch, initialValue = "" }) => {
 
   const clearInput = () => {
     setSearchValue("");
+    updateQueryParams("");
     onSearch("");
   };
 
   const handleSearch = () => {
     onSearch(searchValue.trim());
+    updateQueryParams(searchValue.trim());
   };
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       handleSearch();
     }
+  };
+
+  const updateQueryParams = (value) => {
+    const params = new URLSearchParams(window.location.search);
+    params.set("search", value);
+    window.history.replaceState(null, "", `?${params.toString()}`);
   };
 
   return (
@@ -50,7 +58,9 @@ export const Search = ({ onSearch, initialValue = "" }) => {
           <IoIosClose />
         </button>
       )}
-      <button className={styles.btn}>Поиск</button>
+      <button className={styles.btn} onClick={handleSearch}>
+        Поиск
+      </button>
     </div>
   );
 };

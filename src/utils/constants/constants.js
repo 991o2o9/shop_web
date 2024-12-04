@@ -1,11 +1,12 @@
 export const path = {
   home: "/",
-  about: "/about-us",
+  order: "/order",
   productPage: "/product-list",
+  admin: "/admin",
 };
 
 export const navigation = [
   { label: "Главная", path: path.home },
-  { label: "О нас", path: path.about },
   { label: "Товары", path: path.productPage },
+  { label: "Заказы", path: path.order },
 ];

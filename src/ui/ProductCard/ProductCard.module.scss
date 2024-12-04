@@ -28,12 +28,14 @@
     .priceArea {
       display: flex;
       justify-content: space-between;
+      align-items: flex-start;
+      height: fit-content;
       p {
         color: #5f2eea;
         font-size: 16px;
         font-weight: 700;
       }
-      a {
+      button {
         color: #4e4b66;
         font-size: 16px;
         font-weight: 400;

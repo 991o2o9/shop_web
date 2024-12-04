@@ -1,0 +1,59 @@
+.ordersTable {
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.table th,
+.table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.table th {
+  background-color: #f4f4f4;
+}
+
+.decreaseButton,
+.increaseButton,
+.payButton {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.decreaseButton {
+  background-color: #f44336;
+  color: white;
+}
+
+.increaseButton {
+  background-color: #4caf50;
+  color: white;
+}
+
+.payButton {
+  padding: 10px 20px;
+  background-color: #5f2eea;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 8px;
+  display: block;
+  margin-top: 10px;
+}
+
+.totalContainer {
+  text-align: right;
+}

@@ -3,9 +3,14 @@ import styles from "./Header.module.scss";
 import { navigation, path } from "../../utils/constants/constants";
 import { Logo } from "../../assets/icons/Logo";
 import { scrollToTop } from "../../utils/helpers/helpers";
+import { useState } from "react";
 
 export const Header = () => {
   const location = useLocation();
+
+  const [balance] = useState(() => {
+    return parseInt(localStorage.getItem("balance"), 10) || 0;
+  });
 
   const getActiveLink = (pathName) => {
     const currentPathSegment = location.pathname.split("/")[1];
@@ -30,6 +35,12 @@ export const Header = () => {
               <span>{item.label}</span>
             </Link>
           ))}
+          <Link style={{ color: "#f7f7fc" }} to={path.admin}>
+            Админ
+          </Link>
+          <div className={styles.balance}>
+            <span>Текущий баланс: {balance} сом</span>
+          </div>
         </nav>
       </div>
     </header>

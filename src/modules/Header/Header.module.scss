@@ -16,19 +16,37 @@
     align-items: center;
     justify-content: flex-start;
     width: 100%;
-    padding: 0px 225px;
+    padding: 0px 125px;
 
     .nav {
       display: flex;
       align-items: center;
       gap: 32px;
       a {
+        display: flex;
+        align-items: center;
         color: #f7f7fc;
       }
       .active {
         transform: scale(1.04);
         border-bottom: 2px solid #f7f7fc;
       }
+      .notificationBadge {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        background-color: red;
+        border-radius: 50%;
+        margin-left: 5px;
+      }
+    }
+  }
+  .balance {
+    display: flex;
+    width: 200px;
+
+    span {
+      color: #f7f7fc;
     }
   }
 }

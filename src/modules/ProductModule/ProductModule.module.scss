@@ -6,6 +6,13 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+    .noResults {
+      text-align: center;
+      font-size: 1.5rem;
+      color: #888;
+      padding: 20px;
+    }
+
     .productList {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
