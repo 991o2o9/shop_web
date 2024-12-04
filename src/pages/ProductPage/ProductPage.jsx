@@ -1,3 +1,9 @@
+import { ProductModule } from "../../modules/ProductModule/ProductModule";
+
 export const ProductPage = () => {
-  return <div></div>;
+  return (
+    <div>
+      <ProductModule />
+    </div>
+  );
 };

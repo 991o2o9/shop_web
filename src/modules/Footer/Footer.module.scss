@@ -47,12 +47,18 @@ footer {
         flex-direction: column;
         gap: 10px;
         a {
-          color: #f7f7fc;
-          transition: 0.3s ease-in-out;
-        }
-        .active {
-          transform: scale(1.04);
-          border-bottom: 2px solid #f7f7fc;
+          width: fit-content;
+
+          span {
+            color: #6e7191;
+          }
+
+          &.active {
+            span {
+              color: #5f2eea;
+              transform: scale(1.04);
+            }
+          }
         }
       }
     }

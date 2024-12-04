@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { Container } from "../../ui/Container/Container";
 import styles from "./Footer.module.scss";
 import { navigation, path } from "../../utils/constants/constants";
@@ -30,15 +30,15 @@ export const Footer = () => {
           <nav>
             <h3>Навигация</h3>
             <div className={styles.navigation}>
-              {navigation.map((item, index) => (
-                <Link
-                  className={getActiveLink(item.path)}
-                  key={index}
+              {navigation.map((item) => (
+                <NavLink
+                  key={item.path}
                   to={item.path}
-                  onClick={scrollToTop()}
+                  className={getActiveLink(item.path)}
+                  onClick={() => scrollToTop()}
                 >
                   <span>{item.label}</span>
-                </Link>
+                </NavLink>
               ))}
             </div>
           </nav>
