@@ -1,7 +1,10 @@
+import { useNavigate } from "react-router-dom";
 import { Container } from "../../../ui/Container/Container";
+import { path } from "../../../utils/constants/constants";
 import { Textpart } from "./components/textPart/Textpart";
 import styles from "./HeroBlock.module.scss";
 export const HeroBlock = () => {
+  const navigate = useNavigate();
   return (
     <>
       <Container>
@@ -12,7 +15,9 @@ export const HeroBlock = () => {
               Доставка по всему Кыргызстану Бесплатно Успей заказать прямо
               сейчас.
             </span>
-            <button>Посмотреть</button>
+            <button onClick={() => navigate(path.productPage)}>
+              Посмотреть
+            </button>
           </div>
         </section>
       </Container>

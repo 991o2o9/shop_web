@@ -9,7 +9,7 @@
     padding: 30px;
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 20px;
     .description {
       display: flex;
       flex-direction: column;
@@ -28,7 +28,7 @@
     .priceArea {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
+      align-items: center;
       height: fit-content;
       .rulePlace {
         display: flex;
@@ -43,6 +43,7 @@
         color: #5f2eea;
         font-size: 16px;
         font-weight: 700;
+        margin: 0;
       }
       button {
         color: #4e4b66;
