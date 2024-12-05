@@ -1,7 +1,5 @@
 import styles from "./OrderCard.module.scss";
 export const OrderCard = ({ item }) => {
-  console.log(item.orders[0]?.img);
-
   return (
     <div className={styles.card}>
       <img src={item.orders[0].img} className={styles.cardImage} />
