@@ -1,6 +1,13 @@
+import axios from "axios";
 import styles from "./ProductCard.module.scss";
+import { MdDelete } from "react-icons/md";
+import { CiEdit } from "react-icons/ci";
+import { useState } from "react";
+import { ChangeModal } from "../../modules/AdminModule/ChangeModal/ChangeModal";
 
 export const ProductCard = ({ item }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const handleAddToCart = () => {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
@@ -18,6 +25,18 @@ export const ProductCard = ({ item }) => {
     alert("Товар добавлен в корзину!");
   };
 
+  const deleteItem = async (id) => {
+    try {
+      await axios.delete(`http://localhost:5000/api/products/${id}`);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const toggleModal = () => {
+    setIsModalOpen((prev) => !prev);
+  };
+
   return (
     <div className={styles.card}>
       <div className={styles.image}>
@@ -30,9 +49,19 @@ export const ProductCard = ({ item }) => {
         </div>
         <div className={styles.priceArea}>
           <p>{item.price} сом</p>
-          <button onClick={handleAddToCart}>Купить</button>
+          <div className={styles.rulePlace}>
+            <CiEdit className={styles.icon} onClick={toggleModal} />
+            <MdDelete
+              className={styles.icon}
+              onClick={() => deleteItem(item._id)}
+            />
+            <button onClick={handleAddToCart}>Купить</button>
+          </div>
         </div>
       </div>
+      {isModalOpen && (
+        <ChangeModal currentProduct={item} toggleModal={toggleModal} />
+      )}
     </div>
   );
 };

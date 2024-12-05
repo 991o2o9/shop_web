@@ -14,19 +14,19 @@ export const OrderCard = ({ item }) => {
                 <strong>О товаре:</strong> {item.description}
               </p>
               <p>
-                <strong>Цена:</strong> {item.price} $
+                <strong>Цена:</strong> {item.price} сом
               </p>
               <p>
                 <strong>Количество:</strong> {item.quantity}
-              </p>
-              <p>
-                <strong>Общая цена:</strong> {item.quantity * item.price} $
               </p>
             </div>
           ))}
         </div>
         <p className={styles.cardPhone}>
           <strong>Телефон:</strong> {item.phone}
+        </p>
+        <p className={styles.cardPhone}>
+          <strong>Общая цена:</strong> {item.totalPrice} сом
         </p>
       </div>
     </div>

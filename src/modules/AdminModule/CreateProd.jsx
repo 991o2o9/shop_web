@@ -13,10 +13,11 @@ export const CreateProd = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: name === "price" ? Number(value) : value,
-    });
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: name === "price" ? (value === "" ? "" : Number(value)) : value,
+    }));
   };
 
   const handleSave = () => {
