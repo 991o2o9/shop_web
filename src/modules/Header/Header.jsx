@@ -3,14 +3,11 @@ import styles from "./Header.module.scss";
 import { navigation, path } from "../../utils/constants/constants";
 import { Logo } from "../../assets/icons/Logo";
 import { scrollToTop } from "../../utils/helpers/helpers";
-import { useState } from "react";
+import { useBalance } from "../OrderModule/context/BalanceProvider/BalanceProvider";
 
 export const Header = () => {
+  const { balance, orders } = useBalance();
   const location = useLocation();
-
-  const [balance] = useState(() => {
-    return parseInt(localStorage.getItem("balance"), 10) || 0;
-  });
 
   const getActiveLink = (pathName) => {
     const currentPathSegment = location.pathname.split("/")[1];
@@ -33,6 +30,9 @@ export const Header = () => {
               onClick={scrollToTop()}
             >
               <span>{item.label}</span>
+              {item.label === "Заказы" && orders?.length > 0 && (
+                <div className={styles.notificationBadge}></div>
+              )}
             </Link>
           ))}
           <Link style={{ color: "#f7f7fc" }} to={path.admin}>

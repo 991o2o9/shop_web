@@ -1,4 +1,4 @@
-import CreateProd from "../../modules/AdminModule/CreateProd";
+import CreateProd from "../../modules/AdminModule/CreateProd/CreateProd";
 
 export const Admin = () => {
   return (

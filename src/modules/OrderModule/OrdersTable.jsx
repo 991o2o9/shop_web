@@ -1,24 +1,12 @@
-import { useState, useEffect } from "react";
 import styles from "./OrdersTable.module.scss";
 import { Container } from "../../ui/Container/Container";
 import axios from "axios";
+import { useState } from "react";
+import { useBalance } from "./context/BalanceProvider/BalanceProvider";
 
 const OrdersTable = () => {
-  const [orders, setOrders] = useState([]);
-  const [balance, setBalance] = useState(() => {
-    return parseInt(localStorage.getItem("balance"), 10) || 0;
-  });
+  const { balance, setBalance, orders, setOrders } = useBalance();
   const [phone, setPhone] = useState("");
-
-  useEffect(() => {
-    const savedCart = JSON.parse(localStorage.getItem("cart")) || [];
-    setOrders(savedCart);
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(orders));
-    localStorage.setItem("balance", balance);
-  }, [orders, balance]);
 
   const updateQuantity = (id, delta) => {
     const updatedOrders = orders
@@ -68,7 +56,6 @@ const OrdersTable = () => {
     }
 
     const dataToSend = prepareDataForServer();
-    console.log(dataToSend);
 
     try {
       const response = await axios.post(
@@ -110,20 +97,23 @@ const OrdersTable = () => {
         balance + parsedFunds
       } сом.`
     );
-    window.location.reload();
   };
 
   return (
     <div className="container">
       <Container>
         <div className={styles.ordersTable}>
-          <input
-            type="text"
-            placeholder="Введите номер телефона"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            className={styles.phoneInput}
-          />
+          <h2 className={styles.title}>Создание заказа:</h2>
+          <div className={styles.numAre}>
+            <p>Введите номер телефона *</p>
+            <input
+              type="text"
+              placeholder="Введите номер телефона"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              className={styles.phoneInput}
+            />
+          </div>
           <table className={styles.table}>
             <thead>
               <tr>

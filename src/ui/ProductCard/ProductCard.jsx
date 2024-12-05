@@ -4,26 +4,11 @@ import { MdDelete } from "react-icons/md";
 import { CiEdit } from "react-icons/ci";
 import { useState } from "react";
 import { ChangeModal } from "../../modules/AdminModule/ChangeModal/ChangeModal";
+import { useBalance } from "../../modules/OrderModule/context/BalanceProvider/BalanceProvider";
 
 export const ProductCard = ({ item }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleAddToCart = () => {
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-    const existingProductIndex = cart.findIndex(
-      (product) => product.id === item.id
-    );
-
-    if (existingProductIndex >= 0) {
-      cart[existingProductIndex].quantity += 1;
-    } else {
-      cart.push({ ...item, quantity: 1 });
-    }
-
-    localStorage.setItem("cart", JSON.stringify(cart));
-    alert("Товар добавлен в корзину!");
-  };
+  const { addToCart } = useBalance();
 
   const deleteItem = async (id) => {
     try {
@@ -55,7 +40,7 @@ export const ProductCard = ({ item }) => {
               className={styles.icon}
               onClick={() => deleteItem(item._id)}
             />
-            <button onClick={handleAddToCart}>Купить</button>
+            <button onClick={() => addToCart(item)}>Купить</button>
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from "./CreateProd.module.scss";
-import { OrderList } from "./OrderList/OrderList";
+import { OrderList } from "../OrderList/OrderList";
 import axios from "axios";
 
 export const CreateProd = () => {
