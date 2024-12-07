@@ -6,7 +6,7 @@ import { useBalance } from "./context/BalanceProvider/BalanceProvider";
 
 const OrdersTable = () => {
   const { balance, setBalance, orders, setOrders } = useBalance();
-  const [phone, setPhone] = useState("");
+  const [phone, setPhone] = useState("+996");
 
   const updateQuantity = (id, delta) => {
     const updatedOrders = orders
@@ -107,11 +107,14 @@ const OrdersTable = () => {
           <div className={styles.numAre}>
             <p>Введите номер телефона *</p>
             <input
-              type="text"
+              type="tel"
               placeholder="Введите номер телефона"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               className={styles.phoneInput}
+              pattern="[\+]996[0-9]{9}"
+              title="Введите номер телефона в формате +996XXXXXXXXX"
+              maxLength={13}
             />
           </div>
           <table className={styles.table}>

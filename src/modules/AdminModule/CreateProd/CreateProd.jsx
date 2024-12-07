@@ -36,7 +36,7 @@ export const CreateProd = () => {
       await axios.post("http://localhost:5000/api/products", data, {
         headers: { "Content-Type": "application/json" },
       });
-      alert("Товар успешно создан");
+      window.location.reload();
     } catch (error) {
       console.error("Error creating product:", error);
     }

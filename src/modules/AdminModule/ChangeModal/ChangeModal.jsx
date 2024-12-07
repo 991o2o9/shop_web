@@ -46,11 +46,10 @@ export const ChangeModal = ({ toggleModal, currentProduct }) => {
       await axios.put(`http://localhost:5000/api/products/${_id}`, data, {
         headers: { "Content-Type": "application/json" },
       });
-      alert("Товар успешно обновлен");
       toggleModal();
       window.location.reload();
     } catch (error) {
-      console.error("Error updating product:", error);
+      console.error(error);
       alert("Ошибка при обновлении товара");
     }
   };

@@ -15,6 +15,7 @@ export const ProductCard = ({ item }) => {
   const deleteItem = async (id) => {
     try {
       await axios.delete(`http://localhost:5000/api/products/${id}`);
+      window.location.reload();
     } catch (error) {
       console.log(error);
     }
@@ -22,6 +23,13 @@ export const ProductCard = ({ item }) => {
 
   const toggleModal = () => {
     setIsModalOpen((prev) => !prev);
+  };
+
+  const truncate = (text, length) => {
+    if (text.length <= length) {
+      return text;
+    }
+    return text.slice(0, length) + "...";
   };
 
   return (
@@ -32,7 +40,7 @@ export const ProductCard = ({ item }) => {
       <div className={styles.info}>
         <div className={styles.description}>
           <span className={styles.title}>{item.title}</span>
-          <span className={styles.desc}>{item.desc}</span>
+          <span className={styles.desc}>{truncate(item.desc, 70)}</span>
         </div>
         <div className={styles.priceArea}>
           <p>{item.price} сом</p>

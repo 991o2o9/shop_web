@@ -18,6 +18,8 @@ export const OrderList = () => {
     fetchData();
   }, []);
 
+  console.log(data);
+
   return (
     <div className={styles.orders}>
       <h3>Заказы Пользователей</h3>

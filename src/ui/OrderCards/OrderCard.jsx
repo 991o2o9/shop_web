@@ -8,13 +8,13 @@ export const OrderCard = ({ item }) => {
           {item.orders.map((item, index) => (
             <div key={index} className={styles.cardInside}>
               <p>
-                <strong>{`Товар-${index + 1}`}:</strong> {item.title}
+                <strong>{`Подукт №${index + 1}`}:</strong> {item.title}
               </p>
               <p>
-                <strong>О товаре:</strong> {item.description}
+                <strong>Информация о товаре:</strong> {item.description}
               </p>
               <p>
-                <strong>Цена:</strong> {item.price} сом
+                <strong>Стоимость:</strong> {item.price} сом
               </p>
               <p>
                 <strong>Количество:</strong> {item.quantity}
@@ -27,6 +27,10 @@ export const OrderCard = ({ item }) => {
         </p>
         <p className={styles.cardPhone}>
           <strong>Общая цена:</strong> {item.totalPrice} сом
+        </p>
+        <p className={styles.cardPhone}>
+          <strong>Время заказа: </strong>
+          {item.orderTime}
         </p>
       </div>
     </div>
