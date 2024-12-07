@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./CreateProd.module.scss";
-import { OrderList } from "../OrderList/OrderList";
 import axios from "axios";
+import { ProductListForChange } from "../ProductListForChange/ProductListForChange";
 
 export const CreateProd = () => {
   const [formData, setFormData] = useState({
@@ -83,7 +83,7 @@ export const CreateProd = () => {
         </div>
         <button onClick={handleSave}>Создать</button>
       </div>
-      <OrderList />
+      <ProductListForChange />
     </div>
   );
 };

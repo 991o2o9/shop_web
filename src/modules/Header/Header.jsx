@@ -35,9 +35,6 @@ export const Header = () => {
               )}
             </Link>
           ))}
-          <Link style={{ color: "#f7f7fc" }} to={path.admin}>
-            Админ
-          </Link>
           <div className={styles.balance}>
             <span>Текущий баланс: {balance} сом</span>
           </div>

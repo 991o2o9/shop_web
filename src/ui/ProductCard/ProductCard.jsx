@@ -10,6 +10,8 @@ export const ProductCard = ({ item }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { addToCart } = useBalance();
 
+  const isAdminPage = window.location.pathname === "/admin";
+
   const deleteItem = async (id) => {
     try {
       await axios.delete(`http://localhost:5000/api/products/${id}`);
@@ -35,12 +37,19 @@ export const ProductCard = ({ item }) => {
         <div className={styles.priceArea}>
           <p>{item.price} сом</p>
           <div className={styles.rulePlace}>
-            <CiEdit className={styles.icon} onClick={toggleModal} />
-            <MdDelete
-              className={styles.icon}
-              onClick={() => deleteItem(item._id)}
-            />
-            <button onClick={() => addToCart(item)}>Купить</button>
+            {isAdminPage && (
+              <>
+                <CiEdit className={styles.icon} onClick={toggleModal} />
+                <MdDelete
+                  className={styles.icon}
+                  onClick={() => deleteItem(item._id)}
+                />
+              </>
+            )}
+
+            {!isAdminPage && (
+              <button onClick={() => addToCart(item)}>Купить</button>
+            )}
           </div>
         </div>
       </div>
